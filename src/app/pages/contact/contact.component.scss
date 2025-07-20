@@ -1,0 +1,44 @@
+.contact-hero {
+  background: var(--info-gradient);
+  color: white;
+  padding: 6rem 0 4rem;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.contact-section {
+  background: var(--light-gray);
+}
+
+.contact-info .contact-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  color: var(--dark-primary);
+}
+
+.contact-info .contact-item i {
+  margin-right: 15px;
+  margin-top: 5px;
+  color: var(--accent-blue);
+  font-size: 1.2rem;
+  min-width: 20px;
+}
+
+.cta-card {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-medium);
+  text-align: center;
+}

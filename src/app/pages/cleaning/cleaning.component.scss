@@ -1,0 +1,63 @@
+.cleaning-hero {
+  background: var(--primary-gradient);
+  color: white;
+  padding: 6rem 0 4rem;
+  text-align: center;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.cleaning-section {
+  background: var(--light-gray);
+}
+
+.service-details {
+  background: white;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-medium);
+  position: relative;
+}
+
+.price-badge {
+  position: absolute;
+  top: -20px;
+  right: 30px;
+  background: var(--accent-blue);
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.service-features {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  text-align: left;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.service-features li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: var(--dark-primary);
+}
+
+.service-features i {
+  color: var(--accent-blue);
+  margin-right: 1rem;
+}

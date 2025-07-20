@@ -1,0 +1,38 @@
+<section class="cleaning-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1 class="hero-title">
+          <span class="gradient-text">{{ cleaningType === 'deep' ? 'Deep' : 'Light' }} Cleaning</span>
+        </h1>
+        <p class="hero-subtitle">{{ cleaningType === 'deep' ? 'Comprehensive cleaning for the perfect finish' : 'Quick and efficient cleaning for busy schedules' }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cleaning-section py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto text-center">
+        <div class="service-details">
+          <div class="price-badge">{{ cleaningType === 'deep' ? '$45' : '$25' }}</div>
+          <h2>{{ cleaningType === 'deep' ? 'Complete Interior & Exterior Detail' : 'Express Clean Service' }}</h2>
+          <p class="lead">{{ cleaningType === 'deep' ? 'Our most comprehensive cleaning service includes everything needed to make your car look and feel brand new.' : 'Perfect for maintaining your vehicle appearance with our quick but thorough cleaning service.' }}</p>
+          <ul class="service-features">
+            <li *ngFor="let feature of features">
+              <i class="fas fa-check"></i> {{ feature }}
+            </li>
+          </ul>
+          <div class="cta-buttons">
+            <a routerLink="/appointment" class="btn btn-gradient btn-lg me-3">
+              <i class="fas fa-calendar-check"></i> Book Now
+            </a>
+            <a routerLink="/services" class="btn btn-outline-primary btn-lg">
+              <i class="fas fa-arrow-left"></i> All Services
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

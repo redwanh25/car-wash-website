@@ -1,0 +1,11 @@
+// App Component Styles
+:host {
+  display: block;
+  min-height: 100vh;
+  position: relative;
+}
+
+main {
+  min-height: calc(100vh - 140px); // Adjust based on header and footer height
+  padding-top: 80px; // Space for fixed header
+}

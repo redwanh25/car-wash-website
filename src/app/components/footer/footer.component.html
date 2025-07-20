@@ -1,0 +1,122 @@
+<footer class="footer">
+  <!-- Main Footer Content -->
+  <div class="footer-main">
+    <div class="container">
+      <div class="row">
+        <!-- Company Info -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="footer-section">
+            <div class="footer-logo mb-3">
+              <i class="fas fa-car"></i>
+              <span class="brand-text">SparkleWash Pro</span>
+            </div>
+            <p class="footer-description">
+              Your premier destination for professional car wash, detailing, and U-Haul rental services. 
+              We provide top-quality cleaning solutions for vehicles, homes, and offices.
+            </p>
+            <!-- Social Links -->
+            <div class="social-links">
+              <a 
+                *ngFor="let social of socialLinks" 
+                [href]="social.url" 
+                class="social-link"
+                [title]="social.name"
+                target="_blank"
+                rel="noopener noreferrer">
+                <i [class]="social.icon"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-2 col-md-6 mb-4">
+          <div class="footer-section">
+            <h5 class="footer-title">Quick Links</h5>
+            <ul class="footer-links">
+              <li *ngFor="let link of quickLinks">
+                <a [routerLink]="link.route">
+                  <i class="fas fa-chevron-right"></i>
+                  {{ link.title }}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Services -->
+        <div class="col-lg-2 col-md-6 mb-4">
+          <div class="footer-section">
+            <h5 class="footer-title">Our Services</h5>
+            <ul class="footer-links">
+              <li *ngFor="let service of services">
+                <a [routerLink]="service.route">
+                  <i class="fas fa-chevron-right"></i>
+                  {{ service.title }}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="footer-section">
+            <h5 class="footer-title">Contact Info</h5>
+            <div class="contact-info">
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                  <strong>Address:</strong><br>
+                  123 Clean Street, Wash City, WC 12345
+                </div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                  <strong>Phone:</strong><br>
+                  <a href="tel:+1234567890">+1 (234) 567-8900</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                  <strong>Email:</strong><br>
+                  <a href="mailto:info&#64;sparklewashpro.com">info&#64;sparklewashpro.com</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                  <strong>Hours:</strong><br>
+                  Mon-Sat: 8AM-6PM<br>
+                  Sunday: 9AM-4PM
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Bottom -->
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="copyright">
+            &copy; {{ currentYear }} SparkleWash Pro. All rights reserved.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Sitemap</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,247 @@
+<!-- Hero Section -->
+<section class="appointment-hero">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1 class="hero-title">
+          Book Your <span class="gradient-text">Appointment</span>
+        </h1>
+        <p class="hero-subtitle">
+          Schedule your car wash, cleaning, or U-Haul rental service today
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Appointment Form Section -->
+<section class="appointment-form-section py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <!-- Success Message -->
+        <div class="alert alert-success fade-in" *ngIf="submissionStatus === 'success'">
+          <i class="fas fa-check-circle"></i>
+          <strong>Success!</strong> Your appointment has been booked successfully. We'll contact you shortly to confirm the details.
+        </div>
+
+        <!-- Appointment Form -->
+        <div class="appointment-card shadow-custom">
+          <div class="card-header">
+            <h3><i class="fas fa-calendar-check"></i> Appointment Details</h3>
+            <p>Please fill out all required fields to schedule your appointment</p>
+          </div>
+
+          <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()" class="appointment-form">
+            <!-- Personal Information -->
+            <div class="form-section">
+              <h4><i class="fas fa-user"></i> Personal Information</h4>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="firstName" class="form-label">First Name *</label>
+                  <input 
+                    type="text" 
+                    class="form-control"
+                    [class.is-invalid]="isFieldInvalid('firstName')"
+                    id="firstName" 
+                    formControlName="firstName"
+                    placeholder="Enter your first name">
+                  <div class="invalid-feedback" *ngIf="isFieldInvalid('firstName')">
+                    {{ getFieldError('firstName') }}
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="lastName" class="form-label">Last Name *</label>
+                  <input 
+                    type="text" 
+                    class="form-control"
+                    [class.is-invalid]="isFieldInvalid('lastName')"
+                    id="lastName" 
+                    formControlName="lastName"
+                    placeholder="Enter your last name">
+                  <div class="invalid-feedback" *ngIf="isFieldInvalid('lastName')">
+                    {{ getFieldError('lastName') }}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="email" class="form-label">Email Address *</label>
+                  <input 
+                    type="email" 
+                    class="form-control"
+                    [class.is-invalid]="isFieldInvalid('email')"
+                    id="email" 
+                    formControlName="email"
+                    placeholder="Enter your email">
+                  <div class="invalid-feedback" *ngIf="isFieldInvalid('email')">
+                    {{ getFieldError('email') }}
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="phone" class="form-label">Phone Number *</label>
+                  <input 
+                    type="tel" 
+                    class="form-control"
+                    [class.is-invalid]="isFieldInvalid('phone')"
+                    id="phone" 
+                    formControlName="phone"
+                    placeholder="1234567890">
+                  <div class="invalid-feedback" *ngIf="isFieldInvalid('phone')">
+                    {{ getFieldError('phone') }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Service Selection -->
+            <div class="form-section">
+              <h4><i class="fas fa-concierge-bell"></i> Service Selection</h4>
+              <div class="service-selection mb-3">
+                <div class="row">
+                  <div class="col-12" *ngFor="let service of services">
+                    <div class="service-option">
+                      <input 
+                        type="radio" 
+                        class="form-check-input"
+                        [id]="service.value"
+                        [value]="service.value"
+                        formControlName="service">
+                      <label [for]="service.value" class="service-label">
+                        <i [class]="service.icon"></i>
+                        <div class="service-info">
+                          <strong>{{ service.label.split(' - ')[0] }}</strong>
+                          <span class="service-price">{{ service.label.split(' - ')[1] }}</span>
+                        </div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="invalid-feedback d-block" *ngIf="isFieldInvalid('service')">
+                  Please select a service
+                </div>
+              </div>
+            </div>
+
+            <!-- Date & Time Selection -->
+            <div class="form-section">
+              <h4><i class="fas fa-clock"></i> Date & Time</h4>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="date" class="form-label">Preferred Date *</label>
+                  <input 
+                    type="date" 
+                    class="form-control"
+                    [class.is-invalid]="isFieldInvalid('date')"
+                    id="date" 
+                    formControlName="date"
+                    [min]="minDate"
+                    [max]="maxDate">
+                  <div class="invalid-feedback" *ngIf="isFieldInvalid('date')">
+                    Please select a date
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="time" class="form-label">Preferred Time *</label>
+                  <select 
+                    class="form-control"
+                    [class.is-invalid]="isFieldInvalid('time')"
+                    id="time" 
+                    formControlName="time">
+                    <option value="">Select time slot</option>
+                    <option [value]="slot" *ngFor="let slot of timeSlots">{{ slot }}</option>
+                  </select>
+                  <div class="invalid-feedback" *ngIf="isFieldInvalid('time')">
+                    Please select a time slot
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Additional Information -->
+            <div class="form-section">
+              <h4><i class="fas fa-info-circle"></i> Additional Information</h4>
+              <div class="mb-3">
+                <label for="vehicleDetails" class="form-label">Vehicle Details (if applicable)</label>
+                <input 
+                  type="text" 
+                  class="form-control"
+                  id="vehicleDetails" 
+                  formControlName="vehicleDetails"
+                  placeholder="Make, Model, Year, Color, License Plate">
+              </div>
+              <div class="mb-3">
+                <label for="address" class="form-label">Service Address (if different from contact address)</label>
+                <textarea 
+                  class="form-control"
+                  id="address" 
+                  formControlName="address"
+                  rows="2"
+                  placeholder="Enter the address where service should be performed"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="specialRequests" class="form-label">Special Requests or Notes</label>
+                <textarea 
+                  class="form-control"
+                  id="specialRequests" 
+                  formControlName="specialRequests"
+                  rows="3"
+                  placeholder="Any special requests or additional information..."></textarea>
+              </div>
+            </div>
+
+            <!-- Terms Agreement -->
+            <div class="form-section">
+              <div class="form-check">
+                <input 
+                  type="checkbox" 
+                  class="form-check-input"
+                  [class.is-invalid]="isFieldInvalid('agreeTerms')"
+                  id="agreeTerms" 
+                  formControlName="agreeTerms">
+                <label class="form-check-label" for="agreeTerms">
+                  I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a> *
+                </label>
+                <div class="invalid-feedback" *ngIf="isFieldInvalid('agreeTerms')">
+                  You must agree to the terms and conditions
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-submit">
+              <button 
+                type="submit" 
+                class="btn btn-gradient btn-lg"
+                [disabled]="submissionStatus === 'loading'">
+                <span *ngIf="submissionStatus === 'loading'">
+                  <i class="fas fa-spinner fa-spin"></i> Processing...
+                </span>
+                <span *ngIf="submissionStatus !== 'loading'">
+                  <i class="fas fa-calendar-check"></i> Book Appointment
+                </span>
+              </button>
+              <p class="form-note">
+                <i class="fas fa-info-circle"></i>
+                We'll contact you within 24 hours to confirm your appointment details.
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Information -->
+<section class="contact-info-section py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h4>Need Help?</h4>
+        <p>Call us directly at <a href="tel:+1234567890"><strong>(234) 567-8900</strong></a> or email us at 
+        <a href="mailto:info&#64;sparklewashpro.com"><strong>info&#64;sparklewashpro.com</strong></a></p>
+      </div>
+    </div>
+  </div>
+</section>
