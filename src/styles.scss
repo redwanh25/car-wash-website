@@ -1,8 +1,8 @@
 /* Global Styles for Car Wash Website */
 
-// Import Bootstrap and Font Awesome
-@import 'bootstrap/scss/bootstrap';
-@import '@fortawesome/fontawesome-free/css/all.min.css';
+// Import Bootstrap and Font Awesome using modern @use syntax
+@use 'bootstrap/scss/bootstrap';
+@use '@fortawesome/fontawesome-free/css/all.min.css';
 
 // Import Google Fonts
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
@@ -19,6 +19,11 @@
   --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   --info-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  
+  // Enhanced Gradients
+  --hero-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  --cta-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 25%, #667eea 50%, #764ba2 75%, #f093fb 100%);
+  --card-gradient: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(240, 147, 251, 0.05) 100%);
   
   // Accent Colors
   --accent-blue: #667eea;
@@ -42,9 +47,23 @@
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 50%, #e9ecef 100%);
   min-height: 100vh;
   overflow-x: hidden;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(102, 126, 234, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(240, 147, 251, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+  }
 }
 
 // Utility Classes
