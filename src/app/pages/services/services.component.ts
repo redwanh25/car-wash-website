@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 export class ServicesComponent {
   mainServices = [
     {
-      icon: 'fas fa-car-wash',
+      icon: 'fas fa-truck',
       title: 'Premium Car Wash',
       description: 'Complete exterior and interior car washing service with eco-friendly products.',
       features: ['Exterior hand wash', 'Interior vacuuming', 'Window cleaning', 'Tire shine', 'Air freshener'],
@@ -21,7 +21,7 @@ export class ServicesComponent {
       popular: true
     },
     {
-      icon: 'fas fa-sparkles',
+      icon: 'fas fa-truck',
       title: 'Deep Cleaning',
       description: 'Comprehensive deep cleaning service for vehicles, homes, and offices.',
       features: ['Complete detailing', 'Engine bay cleaning', 'Paint protection', 'Leather treatment', 'Carpet shampooing'],
