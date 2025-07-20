@@ -66,6 +66,8 @@
     position: relative;
     transition: all 0.3s ease;
     border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
 
     &::before {
       content: '';
@@ -194,6 +196,9 @@
 
     .service-content {
       padding: 0 2rem 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
 
       .service-description {
         color: var(--medium-gray);
@@ -212,6 +217,7 @@
         list-style: none;
         padding: 0;
         margin-bottom: 0;
+        flex-grow: 1;
 
         li {
           display: flex;
@@ -231,6 +237,7 @@
 
     .service-footer {
       padding: 0 2rem 2rem;
+      margin-top: auto;
 
       .btn {
         font-size: 1rem;
